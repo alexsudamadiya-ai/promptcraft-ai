@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptCraft AI - Owner Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f4ff;
+            color: #202040;
+        }
+
+        header {
+            background: #202040;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #202040;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .save {
+            background: #176b3a;
+        }
+
+        .delete {
+            background: #b3261e;
+        }
+
+        .preview {
+            background: #f2f4ff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .portfolio-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .portfolio-item img {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .order-item {
+            border: 1px solid #ddd;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 15px;
+            background: #fafaff;
+        }
+
+        .order-item p {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>👑 PromptCraft AI</h1>
+    <p>OWNER CONTROL PANEL</p>
+</header>
+
+<div class="container">
+
+    <!-- WEBSITE SETTINGS -->
+
+    <div class="card">
+
+        <h2>⚙️ Website Settings</h2>
+
+        <label>Business Name</label>
+
+        <input
+            id="businessName"
+            placeholder="PromptCraft AI"
+        >
+
+        <label>Tagline</label>
+
+        <input
+            id="tagline"
+            placeholder="Your idea. Our prompt. Your picture."
+        >
+
+        <button
+            class="save"
+            onclick="saveSettings()"
+        >
+            💾 Save Website Settings
+        </button>
+
+    </div>
+
+
+    <!-- PRICING -->
+
+    <div class="card">
+
+        <h2>💰 Pricing</h2>
+
+        <label>Starter Price</label>
+        <input id="starterPrice" type="number">
+
+        <label>Creator Price</label>
+        <input id="creatorPrice" type="number">
+
+        <label>Pro Price</label>
+        <input id="proPrice" type="number">
+
+        <label>Poster Price</label>
+        <input id="posterPrice" type="number">
+
+        <button
+            class="save"
+            onclick="savePrices()"
+        >
+            💾 Save Prices
+        </button>
+
+    </div>
+
+
+    <!-- PORTFOLIO -->
+
+    <div class="card">
+
+        <h2>🖼️ Portfolio</h2>
+
+        <label>Artwork Name</label>
+
+        <input
+            id="artName"
+            placeholder="Example: Futuristic City"
+        >
+
+        <label>Image URL</label>
+
+        <input
+            id="artImage"
+            placeholder="Paste image URL"
+        >
+
+        <label>Description</label>
+
+        <textarea
+            id="artDescription"
+            placeholder="Describe your artwork..."
+        ></textarea>
+
+        <button onclick="addArtwork()">
+            ➕ Add Artwork
+        </button>
+
+        <div id="portfolioList"></div>
+
+    </div>
+
+
+    <!-- ORDERS -->
+
+    <div class="card">
+
+        <h2>📦 Test Orders</h2>
+
+        <p>
+            These are test orders saved in this browser.
+        </p>
+
+        <div id="ordersList"></div>
+
+    </div>
+
+
+    <!-- PREVIEW -->
+
+    <div class="card">
+
+        <h2>👀 Your Settings</h2>
+
+        <div class="preview">
+
+            <h2 id="previewName"></h2>
+
+            <p id="previewTagline"></p>
+
+            <hr>
+
+            <p>
+                🌱 Starter:
+                ₹<span id="previewStarter"></span>
+            </p>
+
+            <p>
+                🎨 Creator:
+                ₹<span id="previewCreator"></span>
+            </p>
+
+            <p>
+                ✨ Pro:
+                ₹<span id="previewPro"></span>
+            </p>
+
+            <p>
+                🖼️ Poster:
+                ₹<span id="previewPoster"></span>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESET -->
+
+    <div class="card">
+
+        <h2>⚠️ Reset</h2>
+
+        <p>
+            This removes the saved settings from this browser.
+        </p>
+
+        <button
+            class="delete"
+            onclick="resetEverything()"
+        >
+            🗑️ Reset Everything
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const defaultData = {
+
+    businessName: "PromptCraft AI",
+
+    tagline: "Your idea. Our prompt. Your picture.",
+
+    prices: {
+
+        starter: 49,
+        creator: 99,
+        pro: 199,
+        poster: 249
+
+    },
+
+    portfolio: []
+
+};
+
+
+function getData() {
+
+    const saved =
+        localStorage.getItem("promptcraftData");
+
+    if (saved) {
+
+        return JSON.parse(saved);
+
+    }
+
+    localStorage.setItem(
+        "promptcraftData",
+        JSON.stringify(defaultData)
+    );
+
+    return defaultData;
+
+}
+
+
+function saveData(data) {
+
+    localStorage.setItem(
+        "promptcraftData",
+        JSON.stringify(data)
+    );
+
+    updatePreview();
+
+    loadPortfolio();
+
+    loadOrders();
+
+    alert("✅ Saved successfully!");
+
+}
+
+
+function loadSettings() {
+
+    const data = getData();
+
+    document.getElementById("businessName").value =
+        data.businessName;
+
+    document.getElementById("tagline").value =
+        data.tagline;
+
+    document.getElementById("starterPrice").value =
+        data.prices.starter;
+
+    document.getElementById("creatorPrice").value =
+        data.prices.creator;
+
+    document.getElementById("proPrice").value =
+        data.prices.pro;
+
+    document.getElementById("posterPrice").value =
+        data.prices.poster;
+
+}
+
+
+function saveSettings() {
+
+    const data = getData();
+
+    data.businessName =
+        document.getElementById("businessName").value;
+
+    data.tagline =
+        document.getElementById("tagline").value;
+
+    saveData(data);
+
+}
+
+
+function savePrices() {
+
+    const data = getData();
+
+    data.prices.starter =
+        Number(
+            document.getElementById("starterPrice").value
+        );
+
+    data.prices.creator =
+        Number(
+            document.getElementById("creatorPrice").value
+        );
+
+    data.prices.pro =
+        Number(
+            document.getElementById("proPrice").value
+        );
+
+    data.prices.poster =
+        Number(
+            document.getElementById("posterPrice").value
+        );
+
+    saveData(data);
+
+}
+
+
+function addArtwork() {
+
+    const name =
+        document.getElementById("artName").value;
+
+    const image =
+        document.getElementById("artImage").value;
+
+    const description =
+        document.getElementById("artDescription").value;
+
+    if (!name || !image) {
+
+        alert(
+            "Please enter an artwork name and image URL."
+        );
+
+        return;
+
+    }
+
+    const data = getData();
+
+    data.portfolio.push({
+
+        name: name,
+
+        image: image,
+
+        description: description
+
+    });
+
+    document.getElementById("artName").value = "";
+
+    document.getElementById("artImage").value = "";
+
+    document.getElementById("artDescription").value = "";
+
+    saveData(data);
+
+}
+
+
+function loadPortfolio() {
+
+    const data = getData();
+
+    const list =
+        document.getElementById("portfolioList");
+
+    list.innerHTML = "";
+
+    data.portfolio.forEach(
+        function(art, index) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "portfolio-item";
+
+            item.innerHTML = `
+
+                <img
+                    src="${art.image}"
+                    onerror="this.style.display='none'"
+                >
+
+                <h3>${art.name}</h3>
+
+                <p>${art.description}</p>
+
+                <button
+                    class="delete"
+                    onclick="deleteArtwork(${index})"
+                >
+                    Delete Artwork
+                </button>
+
+            `;
+
+            list.appendChild(item);
+
+        }
+    );
+
+}
+
+
+function deleteArtwork(index) {
+
+    const data = getData();
+
+    data.portfolio.splice(index, 1);
+
+    saveData(data);
+
+}
+
+
+/* ORDERS */
+
+function loadOrders() {
+
+    const orders =
+        JSON.parse(
+            localStorage.getItem("promptcraftOrders")
+        ) || [];
+
+    const list =
+        document.getElementById("ordersList");
+
+    list.innerHTML = "";
+
+    if (orders.length === 0) {
+
+        list.innerHTML =
+            "<p>No test orders yet.</p>";
+
+        return;
+
+    }
+
+    orders.forEach(function(order) {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "order-item";
+
+        item.innerHTML = `
+
+            <h3>📋 Test Order</h3>
+
+            <p>
+                <strong>Name:</strong>
+                ${order.name}
+            </p>
+
+            <p>
+                <strong>Image idea:</strong>
+                ${order.imageIdea}
+            </p>
+
+            <p>
+                <strong>Style:</strong>
+                ${order.style}
+            </p>
+
+            <p>
+                <strong>Package:</strong>
+                ${order.package}
+            </p>
+
+            <p>
+                <strong>Extra instructions:</strong>
+                ${order.instructions || "None"}
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                ${order.date}
+            </p>
+
+            <button
+                class="delete"
+                onclick="deleteOrder(${order.id})"
+            >
+                🗑️ Delete Test Order
+            </button>
+
+        `;
+
+        list.appendChild(item);
+
+    });
+
+}
+
+
+function deleteOrder(id) {
+
+    const orders =
+        JSON.parse(
+            localStorage.getItem("promptcraftOrders")
+        ) || [];
+
+    const updatedOrders =
+        orders.filter(function(order) {
+
+            return order.id !== id;
+
+        });
+
+    localStorage.setItem(
+        "promptcraftOrders",
+        JSON.stringify(updatedOrders)
+    );
+
+    loadOrders();
+
+}
+
+
+function updatePreview() {
+
+    const data = getData();
+
+    document.getElementById("previewName").textContent =
+        data.businessName;
+
+    document.getElementById("previewTagline").textContent =
+        data.tagline;
+
+    document.getElementById("previewStarter").textContent =
+        data.prices.starter;
+
+    document.getElementById("previewCreator").textContent =
+        data.prices.creator;
+
+    document.getElementById("previewPro").textContent =
+        data.prices.pro;
+
+    document.getElementById("previewPoster").textContent =
+        data.prices.poster;
+
+}
+
+
+function resetEverything() {
+
+    const answer =
+        confirm(
+            "Are you sure you want to delete all saved data?"
+        );
+
+    if (!answer) {
+
+        return;
+
+    }
+
+    localStorage.removeItem("promptcraftData");
+
+    location.reload();
+
+}
+
+
+loadSettings();
+
+updatePreview();
+
+loadPortfolio();
+
+loadOrders();
+
+</script>
+
+</body>
+</html>
