@@ -271,34 +271,11 @@
     function submitOrder(event) {
         event.preventDefault();
 
-        const form = event.target;
+        alert("🎉 Your order has been submitted successfully!");
 
-        const order = {
-            id: Date.now(),
-            name: form.elements[0].value,
-            imageIdea: form.elements[1].value,
-            style: form.elements[2].value,
-            package: form.elements[3].value,
-            instructions: form.elements[4].value,
-            date: new Date().toLocaleString()
-        };
-
-        const orders =
-            JSON.parse(localStorage.getItem("promptcraftOrders")) || [];
-
-        orders.push(order);
-
-        localStorage.setItem(
-            "promptcraftOrders",
-            JSON.stringify(orders)
-        );
-
-        alert(
-            "Thank you! Your test order has been received."
-        );
-
-        form.reset();
+        event.target.reset();
     }
 </script>
+   
 </body>
 </html>
