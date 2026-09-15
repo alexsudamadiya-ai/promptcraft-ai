@@ -135,7 +135,9 @@
             font-weight: bold;
         }
 
-        input, textarea, select {
+        input,
+        textarea,
+        select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -197,7 +199,9 @@
     </nav>
 </header>
 
+
 <section class="hero" id="home">
+
     <h1>Turn Your Ideas Into Images ✨</h1>
 
     <p>
@@ -205,122 +209,280 @@
         custom AI artwork from your idea.
     </p>
 
-    <a class="button" href="#order">Create My Image</a>
+    <a class="button" href="#order">
+        Create My Image
+    </a>
+
 </section>
 
+
 <section id="portfolio">
+
     <h2>🖼️ Our Portfolio</h2>
 
     <div class="cards">
 
         <div class="card">
-            <div class="portfolio-box">🐉 Fantasy Art</div>
+            <div class="portfolio-box">
+                🐉 Fantasy Art
+            </div>
+
             <h3>Fantasy</h3>
-            <p>Magical worlds and imaginative scenes.</p>
+
+            <p>
+                Magical worlds and imaginative scenes.
+            </p>
         </div>
 
+
         <div class="card">
-            <div class="portfolio-box">🚀 Sci-Fi</div>
+
+            <div class="portfolio-box">
+                🚀 Sci-Fi
+            </div>
+
             <h3>Science Fiction</h3>
-            <p>Futuristic worlds and technology.</p>
+
+            <p>
+                Futuristic worlds and technology.
+            </p>
+
         </div>
 
+
         <div class="card">
-            <div class="portfolio-box">🎨 Posters</div>
+
+            <div class="portfolio-box">
+                🎨 Posters
+            </div>
+
             <h3>Custom Posters</h3>
-            <p>Creative posters for events and projects.</p>
+
+            <p>
+                Creative posters for events and projects.
+            </p>
+
         </div>
 
+
         <div class="card">
-            <div class="portfolio-box">🌄 Landscapes</div>
+
+            <div class="portfolio-box">
+                🌄 Landscapes
+            </div>
+
             <h3>Landscapes</h3>
-            <p>Beautiful custom environments.</p>
+
+            <p>
+                Beautiful custom environments.
+            </p>
+
         </div>
 
     </div>
+
 </section>
 
+
 <section id="pricing">
+
     <h2>💰 Pricing</h2>
 
     <div class="cards">
 
         <div class="card">
+
             <h3>Starter</h3>
-            <div class="price">₹49</div>
-            <p>1 custom image</p>
+
+            <div class="price">
+                ₹49
+            </div>
+
+            <p>
+                1 custom image
+            </p>
+
         </div>
 
+
         <div class="card">
+
             <h3>Creator</h3>
-            <div class="price">₹99</div>
-            <p>3 custom images</p>
+
+            <div class="price">
+                ₹99
+            </div>
+
+            <p>
+                3 custom images
+            </p>
+
         </div>
 
+
         <div class="card">
+
             <h3>Pro</h3>
-            <div class="price">₹199</div>
-            <p>5 images + 2 revisions</p>
+
+            <div class="price">
+                ₹199
+            </div>
+
+            <p>
+                5 images + 2 revisions
+            </p>
+
         </div>
 
+
         <div class="card">
+
             <h3>Poster</h3>
-            <div class="price">₹249</div>
-            <p>Custom poster artwork</p>
+
+            <div class="price">
+                ₹249
+            </div>
+
+            <p>
+                Custom poster artwork
+            </p>
+
         </div>
 
     </div>
+
 </section>
 
+
 <section id="order">
+
     <h2>🎨 Order Your Custom Image</h2>
 
     <form onsubmit="submitOrder(event)">
 
-        <label>Your name or nickname</label>
-        <input type="text" id="name" required>
+        <label>
+            Your name or nickname
+        </label>
 
-        <label>What image would you like?</label>
+        <input
+            type="text"
+            id="name"
+            required
+        >
+
+
+        <label>
+            What image would you like?
+        </label>
+
         <textarea
             id="image_idea"
             placeholder="Example: A futuristic city on Mars at sunset..."
-            required></textarea>
+            required
+        ></textarea>
 
-        <label>Choose a style</label>
-        <select id="style" required>
-            <option value="">Select a style</option>
-            <option>Cartoon</option>
-            <option>Realistic</option>
-            <option>Fantasy</option>
-            <option>3D</option>
-            <option>Watercolor</option>
-            <option>Other</option>
+
+        <label>
+            Choose a style
+        </label>
+
+        <select
+            id="style"
+            required
+        >
+
+            <option value="">
+                Select a style
+            </option>
+
+            <option>
+                Cartoon
+            </option>
+
+            <option>
+                Realistic
+            </option>
+
+            <option>
+                Fantasy
+            </option>
+
+            <option>
+                3D
+            </option>
+
+            <option>
+                Watercolor
+            </option>
+
+            <option>
+                Other
+            </option>
+
         </select>
 
-        <label>Choose a package</label>
-        <select id="package_name" required>
-            <option value="">Select a package</option>
-            <option>Starter - ₹49</option>
-            <option>Creator - ₹99</option>
-            <option>Pro - ₹199</option>
-            <option>Poster - ₹249</option>
+
+        <label>
+            Choose a package
+        </label>
+
+        <select
+            id="package_name"
+            required
+        >
+
+            <option value="">
+                Select a package
+            </option>
+
+            <option>
+                Starter - ₹49
+            </option>
+
+            <option>
+                Creator - ₹99
+            </option>
+
+            <option>
+                Pro - ₹199
+            </option>
+
+            <option>
+                Poster - ₹249
+            </option>
+
         </select>
 
-        <label>Extra instructions</label>
+
+        <label>
+            Extra instructions
+        </label>
+
         <textarea
             id="instructions"
-            placeholder="Any important details?"></textarea>
+            placeholder="Any important details?"
+        ></textarea>
+
 
         <button type="submit">
             Submit Order
         </button>
 
     </form>
+
 </section>
 
+
 <footer>
-    <p>© 2026 PromptCraft AI</p>
-    <p>Custom AI artwork made from your ideas.</p>
+
+    <p>
+        © 2026 PromptCraft AI
+    </p>
+
+    <p>
+        Custom AI artwork made from your ideas.
+    </p>
+
 </footer>
 
 
@@ -332,47 +494,55 @@
     const SUPABASE_URL =
         "https://yahpckdohsiwwkkswpku.supabase.co";
 
+
     const SUPABASE_ANON_KEY =
-        "YOUR_SUPABASE_PUBLISHABLE_KEY";
+        sb_publishable_HX2xoTGRMicD4owry5dmrA_H0_NwZvX
 
 
-    const supabase = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY
-    );
+    const supabase =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_ANON_KEY
+        );
 
 
     async function submitOrder(event) {
 
         event.preventDefault();
 
+
         const name =
             document.getElementById("name").value;
+
 
         const imageIdea =
             document.getElementById("image_idea").value;
 
+
         const style =
             document.getElementById("style").value;
 
+
         const packageName =
             document.getElementById("package_name").value;
+
 
         const instructions =
             document.getElementById("instructions").value;
 
 
-        const { error } = await supabase
-            .from("orders")
-            .insert([
-                {
-                    name: name,
-                    image_idea: imageIdea,
-                    style: style,
-                    package_name: packageName,
-                    instructions: instructions
-                }
-            ]);
+        const { error } =
+            await supabase
+                .from("orders")
+                .insert([
+                    {
+                        name: name,
+                        image_idea: imageIdea,
+                        style: style,
+                        package_name: packageName,
+                        instructions: instructions
+                    }
+                ]);
 
 
         if (error) {
@@ -391,7 +561,9 @@
             "🎉 Your order has been submitted successfully!"
         );
 
+
         event.target.reset();
+
     }
 
 </script>
