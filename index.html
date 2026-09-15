@@ -223,6 +223,7 @@
     <div class="cards">
 
         <div class="card">
+
             <div class="portfolio-box">
                 🐉 Fantasy Art
             </div>
@@ -232,6 +233,7 @@
             <p>
                 Magical worlds and imaginative scenes.
             </p>
+
         </div>
 
 
@@ -386,38 +388,18 @@
             Choose a style
         </label>
 
-        <select
-            id="style"
-            required
-        >
+        <select id="style" required>
 
             <option value="">
                 Select a style
             </option>
 
-            <option>
-                Cartoon
-            </option>
-
-            <option>
-                Realistic
-            </option>
-
-            <option>
-                Fantasy
-            </option>
-
-            <option>
-                3D
-            </option>
-
-            <option>
-                Watercolor
-            </option>
-
-            <option>
-                Other
-            </option>
+            <option>Cartoon</option>
+            <option>Realistic</option>
+            <option>Fantasy</option>
+            <option>3D</option>
+            <option>Watercolor</option>
+            <option>Other</option>
 
         </select>
 
@@ -426,30 +408,16 @@
             Choose a package
         </label>
 
-        <select
-            id="package_name"
-            required
-        >
+        <select id="package_name" required>
 
             <option value="">
                 Select a package
             </option>
 
-            <option>
-                Starter - ₹49
-            </option>
-
-            <option>
-                Creator - ₹99
-            </option>
-
-            <option>
-                Pro - ₹199
-            </option>
-
-            <option>
-                Poster - ₹249
-            </option>
+            <option>Starter - ₹49</option>
+            <option>Creator - ₹99</option>
+            <option>Pro - ₹199</option>
+            <option>Poster - ₹249</option>
 
         </select>
 
@@ -496,8 +464,7 @@
 
 
     const SUPABASE_ANON_KEY =
-        sb_publishable_HX2xoTGRMicD4owry5dmrA_H0_NwZvX
-
+        "sb_publishable_HX2xoTGRMicD4owry5dmrA_H0_NwZvX";
 
     const supabase =
         window.supabase.createClient(
@@ -509,6 +476,8 @@
     async function submitOrder(event) {
 
         event.preventDefault();
+
+        event.stopPropagation();
 
 
         const name =
